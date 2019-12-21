@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import GlobalStyles from "../../globalStyles";
 import Header from "../Header";
 
 const Container = styled.div``;

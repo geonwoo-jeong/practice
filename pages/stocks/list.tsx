@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import AppLayout from "../../components/AppLayout";
-import Card from "../../components/Card";
+import { ItemCard } from "../../components/Card";
 
 const Container = styled.section`
   padding: 50px 100px;
@@ -48,8 +48,8 @@ const List = () => {
           <SearchInput />
         </SearchResultContainer>
         <CardContainer>
-          {Array.from(Array(12), (part, index) => (
-            <Card key={index} />
+          {Array.from(Array(12), (_, index) => (
+            <ItemCard key={index} />
           ))}
         </CardContainer>
       </Container>

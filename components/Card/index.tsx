@@ -1,2 +1,2 @@
-import Card from "./Card";
-export default Card;
+import ItemCard from "./ItemCard";
+export { ItemCard };

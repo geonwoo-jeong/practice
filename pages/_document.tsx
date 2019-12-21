@@ -2,17 +2,21 @@ import React from "react";
 import Helmet from "react-helmet";
 import Document, { Main, NextScript, Head } from "next/document";
 import { ServerStyleSheet } from "styled-components";
+import { ServerStyleSheets } from "@material-ui/styles";
 
 class CommonsDocument extends Document {
   static async getInitialProps(ctx) {
     const styledComponentsSheet = new ServerStyleSheet();
+    const materialSheets = new ServerStyleSheets();
     const originalRenderPage = ctx.renderPage;
 
     try {
       ctx.renderPage = () =>
         originalRenderPage({
           enhanceApp: App => props =>
-            styledComponentsSheet.collectStyles(<App {...props} />)
+            styledComponentsSheet.collectStyles(
+              materialSheets.collect(<App {...props} />)
+            )
         });
       const initialProps = await Document.getInitialProps(ctx);
 
@@ -23,6 +27,7 @@ class CommonsDocument extends Document {
           <>
             {initialProps.styles}
             {styledComponentsSheet.getStyleElement()}
+            {materialSheets.getStyleElement()}
           </>
         )
       };
@@ -34,6 +39,7 @@ class CommonsDocument extends Document {
     const { helmet } = this.props as any;
     const htmlAttrs = helmet.htmlAttributes.toComponent();
     const bodyAttrs = helmet.bodyAttributes.toComponent();
+
     return (
       <html {...htmlAttrs}>
         <Head>

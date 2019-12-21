@@ -1,27 +1,21 @@
 import styled from "styled-components";
 import AppLayout from "../../components/AppLayout";
+import { TextField } from "@material-ui/core";
 
-const Container = styled.div``;
+const Container = styled.div`
+  background-color: orange;
+`;
 
-const Form = styled.form``;
-
-const InputWrapper = styled.div``;
-
-const Input = styled.input``;
+const Form = styled.form`
+  width: 100%;
+`;
 
 const Search = () => {
   return (
     <AppLayout>
       <Container>
         <Form>
-          <InputWrapper>
-            aaa
-            <Input></Input>
-          </InputWrapper>
-          <InputWrapper>
-            aaa
-            <Input></Input>
-          </InputWrapper>
+          <TextField label="This is Test" />
         </Form>
       </Container>
     </AppLayout>
